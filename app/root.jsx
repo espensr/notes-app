@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "remix";
 
+import styles from '~/styles/main.css'
+
 export function meta() {
   return { title: "New Remix App" };
 }
@@ -28,4 +30,8 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+export function links() {
+  return [{rel: 'stylesheet', href: styles }]
 }
