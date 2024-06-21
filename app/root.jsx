@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "remix";
 
+import MainNavigation from '~/components/MainNavigation'
 import styles from '~/styles/main.css'
 
 export function meta() {
@@ -23,6 +24,9 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <header>
+          <MainNavigation />
+        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
