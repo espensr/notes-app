@@ -1,3 +1,4 @@
+import { useCatch } from "@remix-run/react";
 import {
   Link,
   Links,
@@ -28,6 +29,37 @@ export default function App() {
         <header>
           <MainNavigation />
         </header>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+export function CatchBoundary({error}) {
+  const caughtResponse = useCatch()
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+        <title>{caughtResponse.statusText}</title>
+      </head>
+      <body>
+        <header>
+          <MainNavigation />
+        </header>
+        <main class="error">
+          <h1>{caughtResponse.statusText}</h1>
+          <p>{caughtResponse.data?.message || 'Something went wrong!'}</p>
+          <p>
+            Back to <Link to="/">safety</Link>!
+          </p>
+        </main>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
